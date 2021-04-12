@@ -8,22 +8,22 @@ type calculator struct {
 	Result float32
 }
 
-func (c calculator) Sum() error{
+func (c *calculator) Sum() error{
 	c.Result = c.FirstNumber + c.SecondNumber
 	return nil
 }
 
-func (c calculator) Dif() error{
+func (c *calculator) Dif() error{
 	c.Result = c.FirstNumber - c.SecondNumber
 	return nil
 }
 
-func (c calculator) Mult() error{
+func (c *calculator) Mult() error{
 	c.Result = c.FirstNumber * c.SecondNumber
 	return nil
 }
 
-func (c calculator) Div() error{
+func (c *calculator) Div() error{
 	if c.SecondNumber == 0{
 		return errors.New("divisor cannot be 0")
 	}

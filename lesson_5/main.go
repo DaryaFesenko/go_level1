@@ -1,19 +1,18 @@
 package main
 
 import (
-	fib "./fibonacci"
 	calc "./calculator"
 	"fmt"
 )
 
 func main()  {
-
+/*
 	// Первое и Второе задание с кэшом из мапы
 	fib.Fibonacci(16)
 	fib.Fibonacci(4)
 	fib.Fibonacci(16)
 	fib.Fibonacci(4)
-
+*/
 	// Задания 3 и 4
 	var num1, num2 float32
 	var operation string

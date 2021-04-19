@@ -1,0 +1,68 @@
+package calculator
+
+import "errors"
+
+type calculator struct {
+	FirstNumber float32
+	SecondNumber float32
+	Result float32
+	Operations map[string] interface{}
+}
+
+func (c *calculator) Sum() error{
+	c.Result = c.FirstNumber + c.SecondNumber
+	return nil
+}
+
+func (c *calculator) Dif() error{
+	c.Result = c.FirstNumber - c.SecondNumber
+	return nil
+}
+
+func (c *calculator) Mult() error{
+	c.Result = c.FirstNumber * c.SecondNumber
+	return nil
+}
+
+func (c *calculator) Div() error{
+	if c.SecondNumber == 0{
+		return errors.New("divisor cannot be 0")
+	}
+
+	c.Result = c.FirstNumber / c.SecondNumber
+	return nil
+}
+
+func NewCalculator() *calculator{
+	c := new(calculator)
+
+	c.Operations = map[string] interface{} {
+		"sum" : c.Sum,
+		"+" : c.Sum,
+		"dif": c.Dif,
+		"-": c.Dif,
+		"mult" : c.Mult,
+		"*" : c.Mult,
+		"div": c.Div,
+		"/": c.Div,
+	}
+
+	return c
+}
+
+func Calculator(num1, num2 float32, operation string)  (float32, error){
+	c := NewCalculator()
+
+	c.FirstNumber = num1
+	c.SecondNumber = num2
+
+	if val, ok := c.Operations[operation]; ok{
+		err := val.(func() error)()
+
+		if err != nil{
+			return 0, err
+		}
+	}
+
+	return c.Result, nil
+}

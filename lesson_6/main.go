@@ -8,11 +8,6 @@ import (
 
 func main()  {
 
-	a := 2
-	b := &a
-	c := &b
-	fmt.Println(*b*b)
-	/*
 	// Первое и Второе задание с кэшом из мапы
 	r := fib.Fibonacci(16)
 	fmt.Println(r)
@@ -44,6 +39,6 @@ func main()  {
 		fmt.Println(err)
 	} else {
 		fmt.Println(res)
-	}*/
+	}
 }
 
